@@ -6,7 +6,12 @@ sudo: required
 branches:
   only:
     - master
-script:
-  - npm run lint
-  - npm run test
-  - npm run build
+
+jobs:
+  include:
+    - stage: lint
+      script: npm run lint
+    - stage: test
+      script: npm run test
+    - stage: build
+      script: npm run build

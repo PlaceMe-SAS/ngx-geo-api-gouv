@@ -1,5 +1,7 @@
 # @placeme/ngx-geo-api-gouv-address
 
+[![Build Status](https://travis-ci.com/PlaceMe-SAS/ngx-geo-api-gouv.svg?branch=master)](https://travis-ci.com/PlaceMe-SAS/ngx-geo-api-gouv)
+
 ## Introduction
 
 `@placeme/ngx-geo-api-gouv-address` is the Angular module to use the Geo Api of the French government.
