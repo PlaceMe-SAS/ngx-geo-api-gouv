@@ -7,6 +7,6 @@ branches:
   only:
     - master
 script:
-  - ng run lint
-  - ng run test
-  - ng run build
+  - npm run lint
+  - npm run test
+  - npm run build
