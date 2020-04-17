@@ -6,7 +6,7 @@ export type GeoApiGouvAddressType =
   | 'locality'
   | 'municipality';
 
-export interface GeoApiGouvAdress {
+export interface GeoApiGouvAddress {
   id: string;
   type: GeoApiGouvAddressType;
   score: number;
@@ -26,7 +26,7 @@ export interface GeoApiGouvAdress {
 }
 
 export interface GeoApiGouvAddressFeatureCollection extends Feature {
-  properties: GeoApiGouvAdress;
+  properties: GeoApiGouvAddress;
 }
 
 export interface GeoApiGouvAddressResponse extends FeatureCollection {

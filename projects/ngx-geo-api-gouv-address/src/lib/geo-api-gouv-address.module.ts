@@ -13,17 +13,17 @@ import { GeoApiGouvAddressService } from './geo-api-gouv-address.service';
   exports: [],
   providers: [],
 })
-export class GeoApiGouvAdressModule {
-  constructor(@Optional() @SkipSelf() parentModule?: GeoApiGouvAdressModule) {
+export class GeoApiGouvAddressModule {
+  constructor(@Optional() @SkipSelf() parentModule?: GeoApiGouvAddressModule) {
     if (parentModule) {
       throw new Error(
-        'GeoApiGouvAdressModule is already loaded. Import it in the AppModule only'
+        'GeoApiGouvAddressModule is already loaded. Import it in the AppModule only'
       );
     }
   }
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: GeoApiGouvAdressModule,
+      ngModule: GeoApiGouvAddressModule,
       providers: [GeoApiGouvAddressService],
     };
   }

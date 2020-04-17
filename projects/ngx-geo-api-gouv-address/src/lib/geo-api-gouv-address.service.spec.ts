@@ -3,7 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { GeoApiGouvAddressService } from './geo-api-gouv-address.service';
 
-describe('GeoApiGouvAdressService', () => {
+describe('GeoApiGouvAddressService', () => {
   let service: GeoApiGouvAddressService;
 
   beforeEach(() => {

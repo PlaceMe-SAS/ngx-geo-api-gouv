@@ -25,9 +25,9 @@ npm install geojson --save
 
 ## Usage
 
-### 1. Import the `GeoApiGouvAdressModule`:
+### 1. Import the `GeoApiGouvAddressModule`:
 
-Finally, you can use ngx-translate in your Angular project. You have to import `GeoApiGouvAdressModule.forRoot()` in the root NgModule of your application.
+Finally, you can use ngx-translate in your Angular project. You have to import `GeoApiGouvAddressModule.forRoot()` in the root NgModule of your application.
 
 The [`forRoot`](https://angular.io/api/router/RouterModule#forroot) static method is a convention that provides and configures services at the same time.
 Make sure you only call this method in the root module of your application, most of the time called `AppModule`.
@@ -35,24 +35,24 @@ Make sure you only call this method in the root module of your application, most
 ```ts
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { GeoApiGouvAdressModule } from "@placeme/ngx-geo-api-gouv-address";
+import { GeoApiGouvAddressModule } from "@placeme/ngx-geo-api-gouv-address";
 
 import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CommonModule, GeoApiGouvAdressModule.forRoot()],
+  imports: [CommonModule, GeoApiGouvAddressModule.forRoot()],
 })
 export class AppModule {}
 ```
 
-### 2. Use the `GeoApiGouvAdressService`:
+### 2. Use the `GeoApiGouvAddressService`:
 
 ```ts
 import { Component, OnInit } from "@angular/core";
 import {
-  GeoApiGouvAdressResponse,
-  GeoApiGouvAdressService,
+  GeoApiGouvAddressResponse,
+  GeoApiGouvAddressService,
 } from "@placeme/ngx-geo-api-gouv-address";
 
 @Component({
@@ -61,21 +61,21 @@ import {
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  constructor(private geoApiGouvAdressService: GeoApiGouvAdressService) {}
+  constructor(private geoApiGouvAddressService: GeoApiGouvAddressService) {}
 
   ngOnInit(): void {
     // Search API
-    this.geoApiGouvAdressService
+    this.geoApiGouvAddressService
       .query({ q: "27 rue des Blanchers, 31000 Toulouse" })
-      .subscribe((geoApiGouvAdressResponse: GeoApiGouvAdressResponse) => {
-        console.log(geoApiGouvAdressResponse);
+      .subscribe((geoApiGouvAddressResponse: GeoApiGouvAddressResponse) => {
+        console.log(geoApiGouvAddressResponse);
       });
 
     // Reverse API
-    this.geoApiGouvAdressService
+    this.geoApiGouvAddressService
       .reverse({ lat: 43.602508, lon: 1.437591 })
-      .subscribe((geoApiGouvAdressResponse: GeoApiGouvAdressResponse) => {
-        console.log(geoApiGouvAdressResponse);
+      .subscribe((geoApiGouvAddressResponse: GeoApiGouvAddressResponse) => {
+        console.log(geoApiGouvAddressResponse);
       });
   }
 }
@@ -90,7 +90,7 @@ interface QueryRequestParams {
   autocomplete?: number;
   lat?: number;
   lon?: number;
-  type?: GeoApiGouvAdressType;
+  type?: GeoApiGouvAddressType;
   postcode?: string;
   citycode?: string;
 }
@@ -102,24 +102,24 @@ interface QueryRequestParams {
 interface ReverseRequestParams {
   lat: number;
   lon: number;
-  type?: GeoApiGouvAdressType;
+  type?: GeoApiGouvAddressType;
 }
 ```
 
-### 6. See the interface `GeoApiGouvAdressResponse`:
+### 6. See the interface `GeoApiGouvAddressResponse`:
 
 ```ts
 import { Feature, FeatureCollection } from "geojson";
 
-export type GeoApiGouvAdressType =
+export type GeoApiGouvAddressType =
   | "housenumber"
   | "street"
   | "locality"
   | "municipality";
 
-export interface GeoApiGouvAdress {
+export interface GeoApiGouvAddress {
   id: string;
-  type: GeoApiGouvAdressType;
+  type: GeoApiGouvAddressType;
   score: number;
   housenumber?: string;
   name?: string;
@@ -136,11 +136,11 @@ export interface GeoApiGouvAdress {
   importance: number;
 }
 
-export interface GeoApiGouvAdressFeatureCollection extends Feature {
-  properties: GeoApiGouvAdress;
+export interface GeoApiGouvAddressFeatureCollection extends Feature {
+  properties: GeoApiGouvAddress;
 }
 
-export interface GeoApiGouvAdressResponse extends FeatureCollection {
-  features: GeoApiGouvAdressFeatureCollection[];
+export interface GeoApiGouvAddressResponse extends FeatureCollection {
+  features: GeoApiGouvAddressFeatureCollection[];
 }
 ```
