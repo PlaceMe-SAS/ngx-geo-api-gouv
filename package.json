@@ -18,7 +18,8 @@
     "build:dev": "npm run build && cd dist/ngx-geo-api-gouv-address && npm pack",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "publish": "npm run build && npm login && npm publish dist/ngx-geo-api-gouv-address"
   },
   "private": true,
   "dependencies": {
