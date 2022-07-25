@@ -21,7 +21,7 @@ export class GeoApiGouvAddressModule {
       );
     }
   }
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<GeoApiGouvAddressModule> {
     return {
       ngModule: GeoApiGouvAddressModule,
       providers: [GeoApiGouvAddressService],
