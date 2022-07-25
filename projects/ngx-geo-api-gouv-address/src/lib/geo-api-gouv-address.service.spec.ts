@@ -6,8 +6,8 @@ import { GeoApiGouvAddressService } from './geo-api-gouv-address.service';
 describe('GeoApiGouvAddressService', () => {
   let service: GeoApiGouvAddressService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [GeoApiGouvAddressService],
     });
