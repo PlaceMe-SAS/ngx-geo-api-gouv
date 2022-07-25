@@ -23,6 +23,9 @@ npm install @placeme/ngx-geo-api-gouv-address --save
 npm install geojson --save
 ```
 
+Use version 1 for Angular version 9 to 12.  
+Use version 2 for Angular version 13 and above
+
 ## Usage
 
 ### 1. Import the `GeoApiGouvAddressModule`:
