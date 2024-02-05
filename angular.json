@@ -44,8 +44,9 @@
       }
     }
   },
-  "defaultProject": "ngx-geo-api-gouv-address",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

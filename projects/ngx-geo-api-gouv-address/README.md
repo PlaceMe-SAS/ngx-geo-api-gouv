@@ -24,7 +24,8 @@ npm install geojson --save
 ```
 
 Use version 1 for Angular version 9 to 12.  
-Use version 2 for Angular version 13 and above
+Use version 2 for Angular version 13 and above and Ivy engine.
+For Angular version 14 and above, you can also use the version having the same major number.
 
 ## Usage
 
@@ -53,10 +54,7 @@ export class AppModule {}
 
 ```ts
 import { Component, OnInit } from "@angular/core";
-import {
-  GeoApiGouvAddressResponse,
-  GeoApiGouvAddressService,
-} from "@placeme/ngx-geo-api-gouv-address";
+import { GeoApiGouvAddressResponse, GeoApiGouvAddressService } from "@placeme/ngx-geo-api-gouv-address";
 
 @Component({
   selector: "app-root",
@@ -68,18 +66,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // Search API
-    this.geoApiGouvAddressService
-      .query({ q: "27 rue des Blanchers, 31000 Toulouse" })
-      .subscribe((geoApiGouvAddressResponse: GeoApiGouvAddressResponse) => {
-        console.log(geoApiGouvAddressResponse);
-      });
+    this.geoApiGouvAddressService.query({ q: "27 rue des Blanchers, 31000 Toulouse" }).subscribe((geoApiGouvAddressResponse: GeoApiGouvAddressResponse) => {
+      console.log(geoApiGouvAddressResponse);
+    });
 
     // Reverse API
-    this.geoApiGouvAddressService
-      .reverse({ lat: 43.602508, lon: 1.437591 })
-      .subscribe((geoApiGouvAddressResponse: GeoApiGouvAddressResponse) => {
-        console.log(geoApiGouvAddressResponse);
-      });
+    this.geoApiGouvAddressService.reverse({ lat: 43.602508, lon: 1.437591 }).subscribe((geoApiGouvAddressResponse: GeoApiGouvAddressResponse) => {
+      console.log(geoApiGouvAddressResponse);
+    });
   }
 }
 ```
@@ -114,11 +108,7 @@ interface ReverseRequestParams {
 ```ts
 import { Feature, FeatureCollection } from "geojson";
 
-export type GeoApiGouvAddressType =
-  | "housenumber"
-  | "street"
-  | "locality"
-  | "municipality";
+export type GeoApiGouvAddressType = "housenumber" | "street" | "locality" | "municipality";
 
 export interface GeoApiGouvAddress {
   id: string;

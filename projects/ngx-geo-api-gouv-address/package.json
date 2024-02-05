@@ -1,6 +1,6 @@
 {
   "name": "@placeme/ngx-geo-api-gouv-address",
-  "version": "2.0.0",
+  "version": "14.0.0",
   "author": "PlaceMe SAS",
   "license": "MIT",
   "homepage": "https://github.com/PlaceMe-SAS/ngx-geo-api-gouv/blob/master/projects/ngx-geo-api-gouv-address/README.md",
@@ -21,10 +21,10 @@
     "GeoJSON"
   ],
   "peerDependencies": {
-    "@angular/common": ">=13.0",
-    "@angular/core": ">=13.0",
+    "@angular/common": ">=14.0",
+    "@angular/core": ">=14.0",
     "geojson": "^0.5.0",
-    "rxjs": ">=6.5"
+    "rxjs": ">=7.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
