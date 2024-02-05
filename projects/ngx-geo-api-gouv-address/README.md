@@ -24,7 +24,7 @@ npm install geojson --save
 ```
 
 Use version 1 for Angular version 9 to 12.  
-Use version 2 for Angular version 13 and above and Ivy engine.
+Use version 2 for Angular version 13 and above and Ivy engine.  
 For Angular version 14 and above, you can also use the version having the same major number.
 
 ## Usage
