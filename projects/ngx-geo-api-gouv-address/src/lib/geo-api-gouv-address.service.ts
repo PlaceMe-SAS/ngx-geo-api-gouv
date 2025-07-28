@@ -7,7 +7,7 @@ import {
   GeoApiGouvAddressType,
 } from './geo-api-gouv-address.interface';
 
-const API_ENDPOINT = 'https://api-adresse.data.gouv.fr';
+const API_ENDPOINT = 'https://data.geopf.fr/geocodage';
 
 interface QueryRequestParams {
   q: string;
@@ -33,18 +33,14 @@ export class GeoApiGouvAddressService {
   query(params: QueryRequestParams): Observable<GeoApiGouvAddressResponse> {
     return this.httpClient.get<GeoApiGouvAddressResponse>(
       `${API_ENDPOINT}/search/`,
-      {
-        params: params as any,
-      }
+      { params: params as any }
     );
   }
 
   reverse(params: ReverseRequestParams): Observable<GeoApiGouvAddressResponse> {
     return this.httpClient.get<GeoApiGouvAddressResponse>(
       `${API_ENDPOINT}/reverse/`,
-      {
-        params: params as any,
-      }
+      { params: params as any }
     );
   }
 }
