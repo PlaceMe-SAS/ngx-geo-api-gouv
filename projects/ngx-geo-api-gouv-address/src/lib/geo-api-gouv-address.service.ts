@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
 
 import {
   GeoApiGouvAddressResponse,
   GeoApiGouvAddressType,
 } from './geo-api-gouv-address.interface';
-
-const API_ENDPOINT = 'https://data.geopf.fr/geocodage';
+import {GEO_GOUV_API_URL} from "./geo-api-gouv-address.tokens";
 
 interface QueryRequestParams {
   q: string;
@@ -28,18 +27,19 @@ interface ReverseRequestParams {
 
 @Injectable()
 export class GeoApiGouvAddressService {
-  constructor(private httpClient: HttpClient) {}
+  private readonly apiUrl: string = inject(GEO_GOUV_API_URL);
+  private httpClient = inject(HttpClient);
 
   query(params: QueryRequestParams): Observable<GeoApiGouvAddressResponse> {
     return this.httpClient.get<GeoApiGouvAddressResponse>(
-      `${API_ENDPOINT}/search/`,
+      `${this.apiUrl}/search/`,
       { params: params as any }
     );
   }
 
   reverse(params: ReverseRequestParams): Observable<GeoApiGouvAddressResponse> {
     return this.httpClient.get<GeoApiGouvAddressResponse>(
-      `${API_ENDPOINT}/reverse/`,
+      `${this.apiUrl}/reverse/`,
       { params: params as any }
     );
   }
