@@ -29,28 +29,48 @@ For Angular version 14 and above, you can also use the version having the same m
 
 ## Usage
 
-### 1. Import the `GeoApiGouvAddressModule`:
+### 1. Standalone Application
 
-Finally, you can use ngx-translate in your Angular project. You have to import `GeoApiGouvAddressModule.forRoot()` in the root NgModule of your application.
-
-The [`forRoot`](https://angular.io/api/router/RouterModule#forroot) static method is a convention that provides and configures services at the same time.
-Make sure you only call this method in the root module of your application, most of the time called `AppModule`.
+For standalone apps, provide the service when bootstrapping:
 
 ```ts
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { GeoApiGouvAddressModule } from "@placeme/ngx-geo-api-gouv-address";
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { provideGeoApiGouvAddress } from '@placeme/ngx-geo-api-gouv-address';
 
-import { AppComponent } from "./app.component";
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideGeoApiGouvAddress(), // default URL
+    // provideGeoApiGouvAddress('https://my.custom.api/adresses') // custom URL
+  ],
+});
+```
+
+### 2. Import in a Root Module
+
+Import `GeoApiGouvAddressModule.forRoot()` in your root NgModule (`AppModule`) to configure the service:
+
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { GeoApiGouvAddressModule } from '@placeme/ngx-geo-api-gouv-address';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CommonModule, GeoApiGouvAddressModule.forRoot()],
+  imports: [
+    BrowserModule,
+    GeoApiGouvAddressModule.forRoot(), // default URL
+    // GeoApiGouvAddressModule.forRoot('https://my.custom.api/adresses') // custom URL
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
 
-### 2. Use the `GeoApiGouvAddressService`:
+> Only call `forRoot()` in the root module to provide and configure services.
+
+### 3. Use the `GeoApiGouvAddressService`:
 
 ```ts
 import { Component, OnInit } from "@angular/core";
@@ -137,3 +157,8 @@ export interface GeoApiGouvAddressResponse extends FeatureCollection {
   features: GeoApiGouvAddressFeatureCollection[];
 }
 ```
+
+### 7. Notes
+
+* Supports both **NgModule** (`forRoot()`) and **Standalone** (`provideGeoApiGouvAddress()`) approaches.
+* You can provide a custom API URL or use the default one.
