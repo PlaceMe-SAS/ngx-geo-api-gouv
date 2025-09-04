@@ -14,6 +14,15 @@ See the REST api definition : [`https://geo.api.gouv.fr/adresse`](https://geo.ap
 
 ![alt text](https://res.cloudinary.com/placeme/image/upload/v1539976689/logo/logo-violet.png)
 
+## Table of Contents
+- [Installation](#installation)
+- [Notes](#notes)
+- [Usage](#usage)
+  - [1a. Standalone Application (AppConfig)](#1a-standalone-application-appconfig)
+  - [1b. Import in a Root Module (NgModule)](#1b-import-in-a-root-module-ngmodule)
+- [Service Usage](#2-use-the-geoapigouvaddressservice)
+- [API Reference](#3-see-the-interface-queryrequestparams)
+
 ## Installation
 
 First you need to install the npm module:
@@ -27,9 +36,17 @@ Use version 1 for Angular version 9 to 12.
 Use version 2 for Angular version 13 and above and Ivy engine.  
 For Angular version 14 and above, you can also use the version having the same major number.
 
+## Notes
+
+- This library supports both **NgModule** (`forRoot()`) and **AppConfig/Standalone** (`provideGeoApiGouvAddress()`) approaches.
+- You can provide a custom API URL or use the default one.
+- See section **1a** for AppConfig/Standalone and **1b** for AppModule/NgModule usage.
+
+---
+
 ## Usage
 
-### 1. Standalone Application
+### 1a. Standalone Application (AppConfig)
 
 For standalone apps, provide the service when bootstrapping:
 
@@ -46,7 +63,7 @@ bootstrapApplication(AppComponent, {
 });
 ```
 
-### 2. Import in a Root Module
+### 1b. Import in a Root Module (NgModule)
 
 Import `GeoApiGouvAddressModule.forRoot()` in your root NgModule (`AppModule`) to configure the service:
 
@@ -70,7 +87,7 @@ export class AppModule {}
 
 > Only call `forRoot()` in the root module to provide and configure services.
 
-### 3. Use the `GeoApiGouvAddressService`:
+### 2. Use the `GeoApiGouvAddressService`:
 
 ```ts
 import { Component, OnInit } from "@angular/core";
@@ -98,7 +115,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-### 4. See the interface `QueryRequestParams`:
+### 3. See the interface `QueryRequestParams`:
 
 ```ts
 interface QueryRequestParams {
@@ -113,7 +130,7 @@ interface QueryRequestParams {
 }
 ```
 
-### 5. See the interface `ReverseRequestParams`:
+### 4. See the interface `ReverseRequestParams`:
 
 ```ts
 interface ReverseRequestParams {
@@ -123,7 +140,7 @@ interface ReverseRequestParams {
 }
 ```
 
-### 6. See the interface `GeoApiGouvAddressResponse`:
+### 5. See the interface `GeoApiGouvAddressResponse`:
 
 ```ts
 import { Feature, FeatureCollection } from "geojson";
@@ -157,8 +174,3 @@ export interface GeoApiGouvAddressResponse extends FeatureCollection {
   features: GeoApiGouvAddressFeatureCollection[];
 }
 ```
-
-### 7. Notes
-
-* Supports both **NgModule** (`forRoot()`) and **Standalone** (`provideGeoApiGouvAddress()`) approaches.
-* You can provide a custom API URL or use the default one.
