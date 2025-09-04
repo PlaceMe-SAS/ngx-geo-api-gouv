@@ -3,21 +3,14 @@ import { TestBed } from '@angular/core/testing';
 
 import { GeoApiGouvAddressService } from './geo-api-gouv-address.service';
 import { DEFAULT_GEO_API_URL } from './geo-api-gouv-address.tokens';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('GeoApiGouvAddressService', () => {
   let service: GeoApiGouvAddressService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        GeoApiGouvAddressService,
-        provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting(),
-      ],
+      providers: [GeoApiGouvAddressService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
     service = TestBed.inject(GeoApiGouvAddressService);
   });
@@ -27,7 +20,7 @@ describe('GeoApiGouvAddressService', () => {
   });
 
   it('should use the default URL when none custom url is provided', () => {
-    // @ts-ignore
+    // @ts-expect-error private attribute access
     expect(service.apiUrl).toBe(DEFAULT_GEO_API_URL);
   });
 });

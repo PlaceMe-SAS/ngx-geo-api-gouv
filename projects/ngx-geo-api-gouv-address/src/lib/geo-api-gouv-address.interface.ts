@@ -1,10 +1,6 @@
 import { Feature, FeatureCollection } from 'geojson';
 
-export type GeoApiGouvAddressType =
-  | 'housenumber'
-  | 'street'
-  | 'locality'
-  | 'municipality';
+export type GeoApiGouvAddressType = 'housenumber' | 'street' | 'locality' | 'municipality';
 
 export interface GeoApiGouvAddress {
   id: string;

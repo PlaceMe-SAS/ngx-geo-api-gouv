@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
 
-import {
-  GeoApiGouvAddressResponse,
-  GeoApiGouvAddressType,
-} from './geo-api-gouv-address.interface';
-import {GEO_GOUV_API_URL} from "./geo-api-gouv-address.tokens";
+import { GeoApiGouvAddressResponse, GeoApiGouvAddressType } from './geo-api-gouv-address.interface';
+import { GEO_GOUV_API_URL } from './geo-api-gouv-address.tokens';
 
 interface QueryRequestParams {
   q: string;
@@ -31,16 +29,10 @@ export class GeoApiGouvAddressService {
   private httpClient = inject(HttpClient);
 
   query(params: QueryRequestParams): Observable<GeoApiGouvAddressResponse> {
-    return this.httpClient.get<GeoApiGouvAddressResponse>(
-      `${this.apiUrl}/search/`,
-      { params: params as any }
-    );
+    return this.httpClient.get<GeoApiGouvAddressResponse>(`${this.apiUrl}/search/`, { params: params as any });
   }
 
   reverse(params: ReverseRequestParams): Observable<GeoApiGouvAddressResponse> {
-    return this.httpClient.get<GeoApiGouvAddressResponse>(
-      `${this.apiUrl}/reverse/`,
-      { params: params as any }
-    );
+    return this.httpClient.get<GeoApiGouvAddressResponse>(`${this.apiUrl}/reverse/`, { params: params as any });
   }
 }

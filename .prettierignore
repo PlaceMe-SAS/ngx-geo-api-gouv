@@ -1,0 +1,9 @@
+*.*
+!**/*.ts
+!**/*.js
+!projects/**/*.css
+!projects/**/*.less
+!projects/**/*.scss
+!projects/**/*.html
+!projects/**/*.json
+package-lock.json
