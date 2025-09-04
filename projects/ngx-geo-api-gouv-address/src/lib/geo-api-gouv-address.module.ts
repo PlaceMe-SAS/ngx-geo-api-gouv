@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 
 import { GeoApiGouvAddressService } from './geo-api-gouv-address.service';
+import { GEO_GOUV_API_URL } from './geo-api-gouv-address.tokens';
 
 @NgModule({
   declarations: [],
@@ -21,10 +22,10 @@ export class GeoApiGouvAddressModule {
       );
     }
   }
-  static forRoot(): ModuleWithProviders<GeoApiGouvAddressModule> {
+  static forRoot(apiUrl?: string): ModuleWithProviders<GeoApiGouvAddressModule> {
     return {
       ngModule: GeoApiGouvAddressModule,
-      providers: [GeoApiGouvAddressService],
+      providers: [GeoApiGouvAddressService,...(apiUrl ? [{provide: GEO_GOUV_API_URL, useValue: apiUrl}] : [])]
     };
   }
 }

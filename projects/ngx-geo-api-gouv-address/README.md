@@ -14,6 +14,15 @@ See the REST api definition : [`https://geo.api.gouv.fr/adresse`](https://geo.ap
 
 ![alt text](https://res.cloudinary.com/placeme/image/upload/v1539976689/logo/logo-violet.png)
 
+## Table of Contents
+- [Installation](#installation)
+- [Notes](#notes)
+- [Usage](#usage)
+  - [1a. Standalone Application (AppConfig)](#1a-standalone-application-appconfig)
+  - [1b. Import in a Root Module (NgModule)](#1b-import-in-a-root-module-ngmodule)
+- [Service Usage](#2-use-the-geoapigouvaddressservice)
+- [API Reference](#3-see-the-interface-queryrequestparams)
+
 ## Installation
 
 First you need to install the npm module:
@@ -27,28 +36,56 @@ Use version 1 for Angular version 9 to 12.
 Use version 2 for Angular version 13 and above and Ivy engine.  
 For Angular version 14 and above, you can also use the version having the same major number.
 
+## Notes
+
+- This library supports both **NgModule** (`forRoot()`) and **AppConfig/Standalone** (`provideGeoApiGouvAddress()`) approaches.
+- You can provide a custom API URL or use the default one.
+- See section **1a** for AppConfig/Standalone and **1b** for AppModule/NgModule usage.
+
+---
+
 ## Usage
 
-### 1. Import the `GeoApiGouvAddressModule`:
+### 1a. Standalone Application (AppConfig)
 
-Finally, you can use ngx-translate in your Angular project. You have to import `GeoApiGouvAddressModule.forRoot()` in the root NgModule of your application.
-
-The [`forRoot`](https://angular.io/api/router/RouterModule#forroot) static method is a convention that provides and configures services at the same time.
-Make sure you only call this method in the root module of your application, most of the time called `AppModule`.
+For standalone apps, provide the service when bootstrapping:
 
 ```ts
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { GeoApiGouvAddressModule } from "@placeme/ngx-geo-api-gouv-address";
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { provideGeoApiGouvAddress } from '@placeme/ngx-geo-api-gouv-address';
 
-import { AppComponent } from "./app.component";
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideGeoApiGouvAddress(), // default URL
+    // provideGeoApiGouvAddress('https://my.custom.api/adresses') // custom URL
+  ],
+});
+```
+
+### 1b. Import in a Root Module (NgModule)
+
+Import `GeoApiGouvAddressModule.forRoot()` in your root NgModule (`AppModule`) to configure the service:
+
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { GeoApiGouvAddressModule } from '@placeme/ngx-geo-api-gouv-address';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CommonModule, GeoApiGouvAddressModule.forRoot()],
+  imports: [
+    BrowserModule,
+    GeoApiGouvAddressModule.forRoot(), // default URL
+    // GeoApiGouvAddressModule.forRoot('https://my.custom.api/adresses') // custom URL
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
+
+> Only call `forRoot()` in the root module to provide and configure services.
 
 ### 2. Use the `GeoApiGouvAddressService`:
 
@@ -78,7 +115,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-### 4. See the interface `QueryRequestParams`:
+### 3. See the interface `QueryRequestParams`:
 
 ```ts
 interface QueryRequestParams {
@@ -93,7 +130,7 @@ interface QueryRequestParams {
 }
 ```
 
-### 5. See the interface `ReverseRequestParams`:
+### 4. See the interface `ReverseRequestParams`:
 
 ```ts
 interface ReverseRequestParams {
@@ -103,7 +140,7 @@ interface ReverseRequestParams {
 }
 ```
 
-### 6. See the interface `GeoApiGouvAddressResponse`:
+### 5. See the interface `GeoApiGouvAddressResponse`:
 
 ```ts
 import { Feature, FeatureCollection } from "geojson";
