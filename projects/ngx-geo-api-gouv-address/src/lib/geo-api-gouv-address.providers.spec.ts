@@ -12,8 +12,8 @@ describe('GeoApiGouvAddressProviders', () => {
     TestBed.configureTestingModule({
       providers: [provideGeoApiGouv(), provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
-
     service = TestBed.inject(GeoApiGouvAddressService);
+
     // @ts-expect-error private attribute access
     expect(service.apiUrl).toBe(DEFAULT_GEO_API_URL);
   });
@@ -24,8 +24,8 @@ describe('GeoApiGouvAddressProviders', () => {
     TestBed.configureTestingModule({
       providers: [provideGeoApiGouv(apiUrl), provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
+    const service = TestBed.inject(GeoApiGouvAddressService);
 
-    service = TestBed.inject(GeoApiGouvAddressService);
     // @ts-expect-error private attribute access
     expect(service.apiUrl).toBe(apiUrl);
   });

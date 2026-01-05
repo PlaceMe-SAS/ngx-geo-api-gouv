@@ -6,16 +6,17 @@ import angular from 'angular-eslint';
 import importPlugin from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-
 export default [
   // TS
-  ...[eslint.configs.recommended,
+  ...[
+    eslint.configs.recommended,
     eslintPluginPrettierRecommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
-  ...angular.configs.tsRecommended].map(conf => ({
+    ...tseslint.configs.recommended,
+    ...tseslint.configs.stylistic,
+    ...angular.configs.tsRecommended
+  ].map((conf) => ({
     ...conf,
-    files: ['**/*.ts'],
+    files: ['**/*.ts']
   })),
   {
     files: ['**/*.ts'],
@@ -25,8 +26,8 @@ export default [
       import: importPlugin
     },
     rules: {
-      "@angular-eslint/directive-selector": ["error", { type: "attribute", prefix: "lib", style: "camelCase" }],
-      "@angular-eslint/component-selector": ["error", { type: "element", prefix: "lib", style: "kebab-case" }],
+      '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: 'lib', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['error', { type: 'element', prefix: 'lib', style: 'kebab-case' }],
       '@angular-eslint/no-conflicting-lifecycle': 'error',
       '@angular-eslint/no-input-rename': 'error',
       '@angular-eslint/no-inputs-metadata-property': 'error',
@@ -166,20 +167,17 @@ export default [
     }
   },
   // HTML
-  ...[
-    ...angular.configs.templateRecommended,
-    ...angular.configs.templateAccessibility].map(conf => ({
-      ...conf,
-      files: ['**/*.html'],
-    })),
+  ...[...angular.configs.templateRecommended, ...angular.configs.templateAccessibility].map((conf) => ({
+    ...conf,
+    files: ['**/*.html']
+  })),
   {
     files: ['**/*.html'],
-    extends: [
-    ],
+    extends: [],
     rules: {
       '@angular-eslint/template/prefer-control-flow': 'error',
       '@angular-eslint/template/prefer-self-closing-tags': 'error',
       '@angular-eslint/template/prefer-ngsrc': 'warn'
     }
   }
-]
+];

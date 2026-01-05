@@ -13,8 +13,8 @@ describe('GeoApiGouvAddressModule', () => {
       imports: [GeoApiGouvAddressModule.forRoot()],
       providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
-
     service = TestBed.inject(GeoApiGouvAddressService);
+
     // @ts-expect-error private attribute access
     expect(service.apiUrl).toBe(DEFAULT_GEO_API_URL);
   });
@@ -26,8 +26,8 @@ describe('GeoApiGouvAddressModule', () => {
       imports: [GeoApiGouvAddressModule.forRoot(apiUrl)],
       providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
+    const service = TestBed.inject(GeoApiGouvAddressService);
 
-    service = TestBed.inject(GeoApiGouvAddressService);
     // @ts-expect-error private attribute access
     expect(service.apiUrl).toBe(apiUrl);
   });
