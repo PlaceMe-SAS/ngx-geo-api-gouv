@@ -56,7 +56,7 @@
     "@angular-eslint/schematics": "^21.1.0",
     "@angular-eslint/template-parser": "^21.1.0",
     "@angular/build": "^21.0.5",
-    "@angular/cli": "^21.0.5",
+    "@angular/cli": "^21.1.4",
     "@angular/compiler-cli": "^21.0.8",
     "@types/geojson": "^7946.0.16",
     "angular-eslint": "^21.1.0",
